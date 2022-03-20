@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>*{
+        margin: 0;
+        padding: 0;
+    }
+        .container{
+            padding: 15px;
+            width: 528px;
+            height: 320px;
+            background-color:rgba(207, 198, 198, 0.404);
+            margin: 100px;
+            margin-left: 400px;
+        }
+    #timeTwo{
+        display: none;
+    }
+        button{
+            height: 50px;
+            width: 200px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            background-color: black;
+            color: white;
+cursor: pointer;
+border: 2px solid whitesmoke ;
+margin-left: 5px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let date;
+        let time;
+        let ptime;
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        setInterval(() => {
+ t= new Date();
+ date= t.toLocaleDateString(undefined,options);
+ time= t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds();
+        
+if(t.getHours() > 12){
+ ptime=    (t.getHours() - 12)  + ":" + t.getMinutes() + ":" + t.getSeconds()+" pm ";
+}
+else{
+    ptime= (t.getHours() - 12)  + ":" + t.getMinutes() + ":" + t.getSeconds()+" am ";
+}
+
+ document.getElementById('time').innerHTML="<br>"+ ptime + "<br><br>" + date ;
+}, 1000);
+        let date2;
+        let time2;
+        let ptime2;
+        const options2 = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        setInterval(() => {
+ a= new Date();
+ date2= a.toLocaleDateString(undefined,options2);
+ ptime2= a.getHours() + ":" + a.getMinutes() + ":" + a.getSeconds();
+ document.getElementById('timeTwo').innerHTML="<br>"+ ptime2 + "<br><br>" + date2;
+}, 1000);
+function odd(){
+var x=document.getElementById("time")
+var y=document.getElementById("timeTwo")
+if(x.style.display === "none"){
+ x.style.display ="block";
+}
+else{
+    x.style.display ="none";
+}
+
+if(x.style.display === "block"){
+    y.style.display ="none"
+}
+else{
+    y.style.display ="block"
+}
+}
+
+
+    </script>
+    <div class="container">    <h1>Current time is: </h1> <h1 id="time"></h1> <h1 id="timeTwo"></h1><br> <br><br> <button  id="myBtn" onclick= odd()>CHANGE TIME FORMAT</button>
+    </div>
+</body>
+</html>
